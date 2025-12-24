@@ -1,5 +1,6 @@
 import streamlit as st
 from PIL import Image
+import os
 
 # ---------------- PAGE CONFIG ----------------
 st.set_page_config(
@@ -70,8 +71,8 @@ a {
 col1, col2 = st.columns([1, 3])
 
 with col1:
-    img = Image.open("profile.jpg")
-    st.image(img, width=150)
+    profile_img = Image.open("profile.jpg")
+    st.image(profile_img, width=150)
 
 with col2:
     st.markdown("<div class='name'>Amulya B</div>", unsafe_allow_html=True)
@@ -89,15 +90,19 @@ with col2:
         "[LinkedIn](https://www.linkedin.com/in/amulya-b-7a0786239)"
     )
 
-    # -------- RESUME DOWNLOAD BUTTON --------
-    with open("Amulya_B_Resume.pdf", "rb") as f:
-        st.download_button(
-        label="📄 Download Resume",
-        data=f,
-        file_name="Amulya_B_Resume.pdf",
-        mime="application/pdf"
-    )
+    # -------- RESUME DOWNLOAD (ROBUST) --------
+    resume_path = "Amulya_B_Resume.pdf"
 
+    if os.path.exists(resume_path):
+        with open(resume_path, "rb") as f:
+            st.download_button(
+                label="📄 Download Resume",
+                data=f,
+                file_name="Amulya_B_Resume.pdf",
+                mime="application/pdf"
+            )
+    else:
+        st.error("❌ Resume file not found on server.")
 
 # ---------------- PROJECTS ----------------
 st.markdown("<div class='section'>Projects ✨</div>", unsafe_allow_html=True)
@@ -114,8 +119,8 @@ st.markdown("[GitHub](https://github.com/amulya817/Sleep-apnea-Detection-with-IO
 st.markdown("<div class='project-title'>🧠 Pediatric Retinal OCT Disease Classification</div>", unsafe_allow_html=True)
 st.markdown(
     "<p class='text'>Deep learning–based medical image classification system using OCT images. "
-    "Fine-tuned a ResNet-18 model with transfer learning in PyTorch to classify CNV, DME, "
-    "DRUSEN, and Normal cases. Training accelerated using GPU on Google Colab.</p>",
+    "Fine-tuned a ResNet-18 model with transfer learning in PyTorch to classify CNV, DME, DRUSEN, "
+    "and Normal cases. Training accelerated using GPU on Google Colab.</p>",
     unsafe_allow_html=True
 )
 st.markdown("[GitHub](https://github.com/amulya817/pediatric-retinal-oct)")
