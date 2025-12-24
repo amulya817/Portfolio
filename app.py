@@ -90,13 +90,14 @@ with col2:
     )
 
     # -------- RESUME DOWNLOAD BUTTON --------
-    with open("Amulya_B_Resume.pdf", "rb") as file:
+    with open("Amulya_B_Resume.pdf", "rb") as f:
         st.download_button(
-            label="📄 Download Resume",
-            data=file,
-            file_name="Amulya_B_Resume.pdf",
-            mime="application/pdf"
-        )
+        label="📄 Download Resume",
+        data=f,
+        file_name="Amulya_B_Resume.pdf",
+        mime="application/pdf"
+    )
+
 
 # ---------------- PROJECTS ----------------
 st.markdown("<div class='section'>Projects ✨</div>", unsafe_allow_html=True)
