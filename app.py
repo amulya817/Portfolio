@@ -21,7 +21,6 @@ st.markdown("""
     padding-bottom: 3rem;
 }
 
-/* Name & intro */
 .name {
     font-size: 36px;
     font-weight: 700;
@@ -41,7 +40,6 @@ st.markdown("""
     line-height: 1.65;
 }
 
-/* SECTION HEADINGS — FIXED */
 .section {
     font-size: 24px;
     font-weight: 700;
@@ -52,7 +50,6 @@ st.markdown("""
     padding-bottom: 6px;
 }
 
-/* Project titles — FIXED */
 .project-title {
     font-size: 18px;
     font-weight: 600;
@@ -61,7 +58,6 @@ st.markdown("""
     color: #2B2B2B;
 }
 
-/* Links */
 a {
     color: #6B5FEA !important;
     text-decoration: none;
@@ -92,6 +88,15 @@ with col2:
         "[GitHub](https://github.com/amulya817) • "
         "[LinkedIn](https://www.linkedin.com/in/amulya-b-7a0786239)"
     )
+
+    # -------- RESUME DOWNLOAD BUTTON --------
+    with open("Amulya_B_Resume.pdf", "rb") as file:
+        st.download_button(
+            label="📄 Download Resume",
+            data=file,
+            file_name="Amulya_B_Resume.pdf",
+            mime="application/pdf"
+        )
 
 # ---------------- PROJECTS ----------------
 st.markdown("<div class='section'>Projects ✨</div>", unsafe_allow_html=True)
